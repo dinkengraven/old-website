@@ -1,0 +1,72 @@
+body {
+	background-color: black;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	color: whitesmoke;
+	font-size: 4em;
+	font-weight: bolder;
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}
+
+h5 {
+	color: rebeccapurple;
+	font-size: 1em;
+	position: absolute;
+	right: 25px;
+	top: 95px;
+}
+
+nav {
+	position: relative;
+	top: 150px;
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+nav > a {
+	padding: 15px;
+}
+
+section {
+	position: relative;
+	top: 180px;
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+section > img {
+	display: inline-block;
+	float: left;
+	margin-left: 15%;
+}
+
+a {
+	color: #A524FF;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:hover {
+	color: #EEBAFF;
+}
+
+h3 {
+	color: whitesmoke;
+}
+
+p {
+	color: whitesmoke;
+}
+
+footer {
+	color: whitesmoke;
+	font-size: 0.5em;
+	position: relative;
+	bottom: -260px;
+	margin-left: 15%;
+	margin-right: 15%;
+}
