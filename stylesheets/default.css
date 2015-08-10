@@ -38,12 +38,6 @@ section {
 	margin-right: 15%;
 }
 
-section > img {
-	display: inline-block;
-	float: left;
-	margin-left: 15%;
-}
-
 a {
 	color: #A524FF;
 	text-decoration: none;
@@ -56,6 +50,10 @@ a:hover {
 
 h3 {
 	color: whitesmoke;
+}
+
+h4 {
+	color: rebeccapurple;
 }
 
 p {
