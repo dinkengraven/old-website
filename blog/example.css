@@ -1,0 +1,15 @@
+div {
+	color: black;
+}
+
+#first {
+	background-color: blue;
+	height: 50px;
+	width: 200px;
+}
+
+#second {
+	background-color: green;
+	height: 50px;
+	width: 200px;
+}

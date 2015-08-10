@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+	<title>blog @ dinkengraven.github.io</title>
+</head>
+
+<body>
+   	<header>
+   		<h1>Katelyn Dinkgrave</h1>
+   		<h5>Student of Code & Registered Dietitian</h5>
+   	</header>
+   	<nav>
+   		<a href="http://dinkengraven.github.io/index.html">About</a>
+   		<a href="http://dinkengraven.github.io/contact.html">Contact</a>
+   		<a href="http://dinkengraven.github.io/blog/index.html">Blog</a>
+   		<a href="http://dinkengraven.github.io/portfolio/index.html">Portfolio</a>
+   	</nav>
+   	<section>
+   		<h3>Technical Blog - Phase 0 Week 2</h3>
+      <h4>The CSS Box Model as a Painting: How to Mat, Frame, and Hang Your Content</h4>
+      <h4>August 10, 2015</h4>
+   		<p>
+        When learning CSS for the first time, there is an overwhelming amount of information to take in -- elements, parents and children, inheritance, cascading, specificity, and so on. Add to this that CSS is a visual language, so you have to hold two concepts in your mind -- the verbal commands you give the computer, and what they should look like on the screen.
+      </p>
+      <p>
+        CSS was very challenging for me, but one thing that I did understand was the Box Model. The Box Model shows the interaction between content, padding, border, and margins. It helped me to think of this as a piece of art that you might take to the store to get framed. First, let's look at our box model, and then we'll compare it to a painting.
+      </p>
+      <p>
+        <img src="t2-images/box-model.png">
+      </p>
+      <p>
+        <img src="t2-images/paintings.JPG">
+      </p>
+      <p>
+        <span>Content:</span> The content is whatever you want to have inside your block, typically text or an image. This is your painting, as above.
+      </p>
+      <p>
+        <span>Padding:</span> This is the space between your content and your border. Think of this as the mat board that surrounds your painting.
+      </p>
+      <p>
+        <span>Border:</span> As you've probably already figured out, the border in CSS is just like the frame for your painting. You can change the color, thickness, and even the style of the border (or have no visible border at all).
+      </p>
+      <p>
+        <span>Margin:</span> Here is where we need to stretch our imaginations a bit. The margin is an invisible line drawn around the framed painting. Anything between the outside edge of the margin and the outside edge of your border (frame) is transparent. 
+      </p>
+      <p>
+        There are two important things to note here. The first is that when two margins touch, the smaller margin collapses into the larger margin. So if you have two paintings with mats and frames, the first with a margin of 20px and the second with margin of 50px, only the 50px margin remains.
+      </p>
+      <p>
+        <img src="t2-images/beards.png">
+      </p>
+      <p>
+        The second is that all of these properties increase the size of your element. So if you have a 50px by 50px image with a padding of 5px all around, then the div is now 60px wide and 60px tall. Add a border of 1px, and now you have a div that is 62px by 62px.
+      </p>
+      <p>
+        Let's see an example in code.
+      </p>
+      <p>
+        <img src="t2-images/step-1.png">
+      </p>
+      <p>
+        Here we start with 2 divs.
+      </p>
+      <p>
+        <img src="t2-images/step-2.png">
+      </p>
+      <p>
+        Add padding to the coral div. (Notice how the overall size changes.)
+      </p>
+      <p>
+        <img src="t2-images/step-3.png">
+      </p>
+      <p>
+        Then add a border.
+      </p>
+      <p>
+        <img src="t2-images/step-4.png">
+      </p>
+      <p>
+      Note how adding the 5px margin-bottom attribute creates a white space between our first and second divs.
+      </p>
+      <p>
+        <img src="t2-images/step-5.png">
+      </p>
+      <p>
+        But when we add a larger 20px margin-top to our second div, it takes precedence over the 5px margin-bottom of the first div.
+      </p>
+      <p>
+        <a href="../blog/index.html">Back to blog index</a>
+      </p>
+   	</section>
+   	<footer>
+   		<p>Copyright 2015 Katelyn Dinkgrave</p>
+   	</footer>
+</body>
+</html>
