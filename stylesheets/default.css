@@ -1,5 +1,5 @@
 body {
-	background-color: black;
+	background-color: #141414;
 	font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -72,4 +72,12 @@ footer {
 .screenshot {
 	width: 800px;
 	height: 450px;
+}
+
+ul {
+	color: whitesmoke;
+}
+
+span {
+	text-decoration: underline;
 }
