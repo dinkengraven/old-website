@@ -41,6 +41,24 @@
         Now let's see what sets arrays and hashes apart.
       </p>
       <p>
+        And you may want to use a hash if...
+        <ul>
+          <li>You want a very specific 1:1 relationship between two pieces of information.</li>
+              <pre><code>
+                dogs = { "Maggie" => "Pointer/Cattle Dog",
+                "Sherman" => "Shepherd/Husky"
+                "Pearl" => "Newfoundland"
+                }
+              </code></pre>
+            Here we have a hash that uses the dog's name as the key, and the breed as the value. Accessing any dog name will return the dog's breed.
+          <p></p>
+          <li>If you don't know the index of an element, but you do know the key. It's much faster/easier for the computer to search through a hash for "Maggie" and return "Pointer/Cattle Dog" than it is for it to search an entire array for that information.</li>
+              <pre><code>
+                dogs["Maggie"]      # > "Pointer/Cattle Dog"
+              </code></pre>
+        </ul>
+      </p>
+      <p>
         You may want to use an array if...
         <ul>
           <li>You don't particularly need any one piece of information attached to another.</li>
@@ -59,24 +77,6 @@
                 cats.push("Henry")
                 cats.inspect        # > ["Egypt", "Beast Boy", "Henry"]
 
-              </code></pre>
-        </ul>
-      </p>
-      <p>
-        And you may want to use a hash if...
-        <ul>
-          <li>You want a very specific 1:1 relationship between two pieces of information.</li>
-              <pre><code>
-                dogs = { "Maggie" => "Pointer/Cattle Dog",
-                "Sherman" => "Shepherd/Husky"
-                "Pearl" => "Newfoundland"
-                }
-              </code></pre>
-            Here we have a hash that uses the dog's name as the key, and the breed as the value. Accessing any dog name will return the dog's breed.
-          <p></p>
-          <li>If you don't know the index of an element, but you do know the key. It's much faster/easier for the computer to search through a hash for "Maggie" and return "Pointer/Cattle Dog" than it is for it to search an entire array for that information.</li>
-              <pre><code>
-                dogs["Maggie"]      # > "Pointer/Cattle Dog"
               </code></pre>
         </ul>
       </p>
