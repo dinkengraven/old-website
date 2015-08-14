@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <title>blog @ dinkengraven.github.io</title>
+</head>
+
+<body>
+    <header>
+      <h1>Katelyn Dinkgrave</h1>
+      <h5>Student of Code & Registered Dietitian</h5>
+    </header>
+    <nav>
+      <a href="http://dinkengraven.github.io/index.html">About</a>
+      <a href="http://dinkengraven.github.io/contact.html">Contact</a>
+      <a href="http://dinkengraven.github.io/blog/index.html">Blog</a>
+      <a href="http://dinkengraven.github.io/portfolio/index.html">Portfolio</a>
+    </nav>
+    <section>
+      <h3>Technical Blog - Phase 0 Week 3</h3>
+         <h4>Arrays & Hashes in Ruby</h4>
+         <h4>August 14, 2015</h4>
+      <p>
+        To the budding Rubyist, arrays and hashes may appear to be the same thing (or very close!). While they do serve similar functions, there are cases wherein you may want to use one over the other. Here is a brief review.
+      </p>
+      <p>
+        First, there are several things that arrays and hashes have in common:
+        <ul>
+          <li>Both store information.</li>
+          <li>This information is stored in an indexed format.</li>
+            <ul>
+              <li>Each item is stored in a specific place, and items are stored in a specific order.</li>
+              <li>You can access any item within the array or hash by accessing its index.</li>
+              <li>Indices use "zero-based numbering," so the first item in an array or hash is at index 0, the second is at index 1, the third is at index 2, and so on.</li>
+            </ul>
+          <li>Both hashes and arrays are good for storing collections of information (multiple items).</li>
+          <li>Both can store any type of object (integers, strings, Boolean values, other arrays, hashes, etc.). Note: In hashes, the key AND value can each be any type of object.</li>
+        </ul>  
+      </p>
+      <p>
+        Now let's see what sets arrays and hashes apart.
+      </p>
+      <p>
+        You may want to use an array if...
+        <ul>
+          <li>You don't particularly need any one piece of information attached to another.</li>
+              <pre><code>
+                cats = ["Egypt", "Beast Boy", "Gorby Thunderhorse"]
+              </code></pre>
+            (I know, I know, there are different breeds of cats. But come on, no one references cat breeds as often as they do dog breeds! The lesson here is that dogs are better.)
+            <p></p>
+          <li>You want to be able to quickly access, remove, or add individual elements.</li>
+              <pre><code>
+                cats[0]             # > "Egypt"
+
+                cats.pop            # > "Gorby Thunderhorse"
+                cats.inspect        # > ["Egypt", "Beast Boy"]
+
+                cats.push("Henry")
+                cats.inspect        # > ["Egypt", "Beast Boy", "Henry"]
+
+              </code></pre>
+        </ul>
+      </p>
+      <p>
+        And you may want to use a hash if...
+        <ul>
+          <li>You want a very specific 1:1 relationship between two pieces of information.</li>
+              <pre><code>
+                dogs = { "Maggie" => "Pointer/Cattle Dog",
+                "Sherman" => "Shepherd/Husky"
+                "Pearl" => "Newfoundland"
+                }
+              </code></pre>
+            Here we have a hash that uses the dog's name as the key, and the breed as the value. Accessing any dog name will return the dog's breed.
+          <p></p>
+          <li>If you don't know the index of an element, but you do know the key. It's much faster/easier for the computer to search through a hash for "Maggie" and return "Pointer/Cattle Dog" than it is for it to search an entire array for that information.</li>
+              <pre><code>
+                dogs["Maggie"]      # > "Pointer/Cattle Dog"
+              </code></pre>
+        </ul>
+      </p>
+      <p>
+        You could also think of it this way: An array is a box with dividers, and a hash is a set of small drawers (like a card catalog). You can carefully arrange items between the dividers in the array, or you can assign a name to each drawer in a hash and store one value within it. Perhaps the best way to test this out is to use <code>irb</code> within your terminal! Try setting up an array and a hash, and accessing information in each one.
+      </p>
+      <p>
+        <a href="../blog/index.html">Back to blog index</a>
+      </p>
+    </section>
+    <footer>
+      <p>Copyright 2015 Katelyn Dinkgrave</p>
+    </footer>
+</body>
+</html>
