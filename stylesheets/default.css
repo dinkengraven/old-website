@@ -38,6 +38,28 @@ section {
 	margin-right: 15%;
 }
 
+#photo-row {
+	position: relative;
+	display: inline;
+	width: 500px;
+	height: 200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#photo-row > img {
+	padding: 12px;
+}
+
+footer {
+	color: whitesmoke;
+	font-size: 0.75em;
+	position: relative;
+	margin-left: 15%;
+	top: 220px;
+	margin-bottom: 15px;
+}
+
 a {
 	color: #A524FF;
 	text-decoration: none;
@@ -77,13 +99,10 @@ img.golden {
 	height: 223px;
 }
 
-footer {
-	color: whitesmoke;
-	font-size: 0.5em;
-	position: relative;
-	bottom: -260px;
-	margin-left: 15%;
-	margin-right: 15%;
+img.img-circle {
+	border-radius: 50%;
+	height: 150px;
+	width: 150px;
 }
 
 .screenshot {
@@ -98,3 +117,11 @@ ul {
 span {
 	text-decoration: underline;
 }
+
+
+
+
+
+
+
+
