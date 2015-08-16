@@ -23,8 +23,8 @@ h5 {
 nav {
 	position: relative;
 	top: 150px;
-	margin-left: 15%;
-	margin-right: 15%;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 nav > a {
@@ -34,8 +34,8 @@ nav > a {
 section {
 	position: relative;
 	top: 180px;
-	margin-left: 15%;
-	margin-right: 15%;
+	margin-left: 10%;
+	margin-right: 10%;
 	width: 60em;
 }
 
@@ -43,7 +43,7 @@ footer {
 	color: whitesmoke;
 	font-size: 0.75em;
 	position: relative;
-	margin-left: 15%;
+	margin-left: 10%;
 	top: 220px;
 	margin-bottom: 15px;
 }
