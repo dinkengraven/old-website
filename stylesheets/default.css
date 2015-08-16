@@ -54,11 +54,27 @@ h3 {
 
 h4 {
 	color: rebeccapurple;
+}
+
+h4.post_type {
 	text-decoration: underline;
 }
 
 p {
 	color: whitesmoke;
+}
+
+p.caption {
+	text-align: center;
+	font-style: italic;
+}
+
+img.golden {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 332px;
+	height: 223px;
 }
 
 footer {
