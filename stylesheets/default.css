@@ -74,6 +74,10 @@ p {
 	color: whitesmoke;
 }
 
+pre {
+	color: whitesmoke;
+}
+
 .photo-row > img {
 	padding: 0.5em;
 }
