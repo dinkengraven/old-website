@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <title>blog @ dinkengraven.github.io</title>
+</head>
+
+<body>
+    <header>
+      <h1>Katelyn Dinkgrave</h1>
+      <h5>Student of Code & Registered Dietitian</h5>
+    </header>
+    <nav>
+      <a href="http://dinkengraven.github.io/index.html">About</a>
+      <a href="http://dinkengraven.github.io/contact.html">Contact</a>
+      <a href="http://dinkengraven.github.io/blog/index.html">Blog</a>
+      <a href="http://dinkengraven.github.io/portfolio/index.html">Portfolio</a>
+    </nav>
+    <section>
+      <h3>Technical Blog - Phase 0 Week 4</h3>
+         <h4>Using the .map Method in Ruby</h4>
+         <h4>August 23, 2015</h4>
+      <p>
+        Within the <a href="http://ruby-doc.org/core-2.2.0/Enumerable.html">Enumerable</a> module of Ruby there is a method called <code>.map</code>. Upon first glance, it seems similar to the array method <a href="http://ruby-doc.org/core-2.2.0/Array.html#method-i-each"><code>.each</code></a>, however there is a major difference between the two.
+      </p>
+      <p>
+        The method .each is written in the docs as <code>each { |item| block } -> ary</code>, meaning that <code>.each</code> iterates over each item within the array one time and passes the block of code to it.
+      </p>
+      <p>
+        <pre><code>
+        ary = ["dogs", "cats", "bananas"]
+
+        ary.each { |word| print word + "!" }
+        # => dogs!
+        # => cats!
+        # => bananas!
+        </code></pre>
+      </p>
+      <p>
+        The <code>.map</code> method looks similar -- <code>map { |object| block } -> array</code> -- however it is different because it innately stores its result in a new array (or if you use the destructive form <code>.map!</code>, then it changes the container that it's working on).
+      </p>
+      <p>
+        <pre><code>
+        ary = [1, 2, 3, 4, 5]
+
+        new_ary = ary.map { |x| x * x }
+
+        p new_ary
+        # => [1, 4, 9, 16, 25]
+
+        p ary
+        # => [1, 2, 3, 4, 5]
+        </code></pre>
+      </p>
+      <p>
+        In the code above, we told Ruby to take each number x within the array ary and multiply it by itself, then store that value in our new array, new_ary. When we inspect new_ary, it shows the result of our code block, and ary is unchanged. Now let's look at the destructive method <code>.map!</code>.
+      </p>
+      <p>
+        <pre><code>
+        ary = [2, 4, 6, 8, 10]
+
+        ary.map! { |x| x - 1 }
+
+        p ary
+        # => [1, 3, 5, 7, 9] 
+        </code></pre>
+      </p>
+      <p>
+        the <code>!</code> in that method tells Ruby, "Don't store this in a new variable, instead permanently change the old array and replace it with the results of this code block."
+      </p>
+      <p>
+        Of course, you don't have to stick with just a single line of code for the block that you pass to the method. You can add rules such as flow control.
+      </p>
+      <p>
+        <pre><code>
+        numbers = [1, 4, 7, 34, 23, 54, 13, 12]
+
+        numbers.map! do |x|
+          if x.even?
+            x = "even!"
+          else
+            x = "odd!"
+          end
+        end
+
+        p numbers
+        # => ["odd!", "even!", "odd!", "even!", "odd!", "even!", "odd!", "even!"] 
+        </code></pre>
+      </p>
+      <p>
+        So to review -- <code>.each</code> passes the block to each item within an array and provides the result, while <code>.map</code> stores this result in a new array.
+      </p>
+      <p>
+        <a href="../blog/index.html">Back to blog index</a>
+      </p>
+    </section>
+    <footer>
+      <p>Copyright 2015 Katelyn Dinkgrave</p>
+    </footer>
+</body>
+</html>
