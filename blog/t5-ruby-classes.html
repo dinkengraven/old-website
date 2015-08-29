@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <title>blog @ dinkengraven.github.io</title>
+</head>
+
+<body>
+    <header>
+      <h1>Katelyn Dinkgrave</h1>
+      <h5>Student of Code & Registered Dietitian</h5>
+    </header>
+    <nav>
+      <a href="http://dinkengraven.github.io/index.html">About</a>
+      <a href="http://dinkengraven.github.io/contact.html">Contact</a>
+      <a href="http://dinkengraven.github.io/blog/index.html">Blog</a>
+      <a href="http://dinkengraven.github.io/portfolio/index.html">Portfolio</a>
+    </nav>
+    <section>
+      <h3>Technical Blog - Phase 0 Week 5</h3>
+         <h4>Ruby Classes with Civilization V</h4>
+         <h4>August 29, 2015</h4>
+      <p>
+        First: I love <a href="http://www.civilization5.com/">Civilization V</a>. It's one of my favorite games of all time, which I know may rankle some of the diehard fans of earlier Civ titles (Civ IV purists, I'm talking about you). For me, it has the perfect combination of beautiful graphics, absorbing gameplay, and endless combinations of game parameters. You can make the game as easy or as difficult as you want, and every time you play it's a unique experience.
+      </p>
+      <p>
+        My DBC blog assignment for this week is to write about classes in Ruby, so I thought this would be a great time to explore a Civilization V Random Game Generator. I kept it pretty simple (though my fiance would disagree with that statement -- you'll see what I mean), but there are more complex game generators out there if you do a quick search.
+      </p>
+      <p>
+        In Civilization V, there are multiple settings that you can select when you create a new game. These include which civ you'll play as (each one has various unique bonuses and attributes), difficulty level, map size/type, number of AI players, and requisite conditions for victory, among many more. Once you've logged a quantity of game hours that you can only describe as "embarrassing," you start looking for ways to spice up the game and make it more interesting. This is where a random game generator comes in handy, as it will randomly select game rules without allowing for your own personal bias. So if you always play as one from a limited group of powerful civs, and the generator dictates that you have to play as one you're wholly unfamiliar with, you have to rapidly form new strategies in order to survive.
+      </p>
+      <p>
+        A Ruby class is perfectly suited to this task because it can contain a group of methods. Each method can stand alone or call on another method within the class. If we built a class <code>CivGame</code>, each instance of this class would be a new set of randomly generated parameters for our game.
+      </p>
+      <p>
+        <pre><code>
+        class CivGame
+          def initialize  
+          end
+        end
+        </code></pre>
+      </p>
+      <p>
+        We'll come back to the <code>initialize</code> method at the end and fill it in. For now, let's move on to our various game parameters. Like I mentioned above, I want my game generator to randomly pick my civ for me, otherwise I'll just keep playing as the Spanish, Incan, or Shoshone.
+      </p>
+      <p>
+        <pre><code>
+        def civilization
+          civs = ["American", "Arabian", "Assyrian", "Austrian", "Aztec", "Babylonian", "Brazilian", 
+                  "Byzantine", "Carthaginian", "Celtic", "Chinese", "Danish", "Dutch", "Egyptian", 
+                  "English", "Ethiopian", "French", "German", "Greek", "Hunnic", "Incan", "Indian", 
+                  "Indonesian", "Iroquois", "Japanese", "Korean", "Mayan", "Mongolian", "Moroccan", 
+                  "Ottoman", "Persian", "Polish", "Polynesian", "Portuguese", "Roman", "Russian", 
+                  "Shoshone", "Siamese", "Songhai", "Spanish", "Swedish", "Venetian", "Zulu"]
+          return civs.sample
+        end
+        </code></pre>
+      </p>
+      <p>
+        You bet I sat here and typed those out.
+      </p>
+      <p>
+        So now we have our array of all the possible civs (thank you DLC and expansion packs), and a line of code that randomly selects one from that array and returns it to the class. We'll do the same with our map size and map type, in two separate methods.
+      </p>
+      <p>
+        <pre><code>
+        def map_size
+          sizes = ["Duel", "Tiny", "Small", "Standard", "Large", "Huge"]
+          return sizes.sample
+        end
+
+        def map_type
+          maps = ["Archipelago", "Continents", "4 Corners", "Fractal", "Great Plains", "Highlands", 
+                  "Ice Age", "Inland Sea", "Lakes", "North vs. South", "Oval", "Pangea", "Skirmish", 
+                  "Small Continents", "Terra", "Tiny Islands", "West vs. East", "Amazon Plus", 
+                  "Arborea", "Boreal", "Europe", "Frontier", "Great Plains Plus", "Hemispheres", 
+                  "Rainforest", "Tilted Axis", "Africa", "Americas", "Asia", "Bering Strait",
+                  "British Isles", "Caribbean", "Continents Plus", "Earth", "Earth Plus", "Fractal",
+                  "Eastern United States", "Ice Age", "Inland Sea", "Japanese Mainland", "Pangea Plus",
+                  "Mediterranean", "Mesopotamia", "Ring", "Sandstorm", "Shuffle"]
+          return maps.sample
+        end
+        </code></pre>
+      </p>
+      <p>
+        Great! These two methods will return a randomly selected map size and type. (Note: If you play Civ V then you know that certain maps default to a specific size, e.g., Africa can't be made duel-sized. We're ignoring that for simplicity's sake.) Now let's add the rest of the players to the mix. In Civ, the AI controls other civilizations as well as city-states. You can interact with these entities in various ways.
+      </p>
+      <p>
+        <pre><code>
+          def ai_civs
+            @num_civs = rand(1..21)
+            return @num_civs
+          end
+
+          def city_states
+            if @num_civs < 5
+            @num_city_states = rand(0..21)
+            else @num_city_states = rand(0..41)
+            end
+            return @num_city_states
+          end
+        </code></pre>
+      </p>
+      <p>
+        In the interest of balance, I added a little rule to the <code>city_states</code> method. You can have a maximum of 22 civs on the board (including the player) and up to 41 city-states, however having a game with 2 civs and 30 city-states is a little insane. So <code>city_states</code> analyzes the output of <code>ai_civs</code> and if the result is less than 5, it adjusts the possible number of city-states accordingly.
+      </p>
+      <p>
+        OK, so we have our civ, the map, the other players, now all we need is a victory condition. There are five different ways to win a game of Civ V (based on the Brave New World rules):
+        <ul>
+          <li>Domination: Control all of the original capital cities in the game, including your own.</li>
+          <li>Cultural: Exert enough tourism to be considered Influential over every other civ in the game.</li>
+          <li>Diplomatic: Receive the minimum number of votes to be elected World Leader in the United Nations.</li>
+          <li>Science: Build and launch a spaceship before any other civ.</li>
+          <li>Time: Have the highest score at the pretermined "end" of the game (default is year 2050 AD).</li>
+        </ul>
+        </p>
+        <p>
+          You can have all victories possible in a game, or you can disable any of them. Diplomatic victory, for example, is widely considered to be an easy win because you can often buy as many votes as you need. I often disable it because it's silly. Removing certain victories can make for an interesting game, too. For example, disabling the Science victory means that you have to rely on a different strategy than you might otherwise employ. Having only the Domination victory active tends to make your neighbors a lot more aggressive, because the AI knows there's only one way to win. So let's add a method for victory conditions.
+      </p>
+      <p>
+        <pre><code>
+          def victory
+            conditions = ["Domination", "Cultural", "Science", "Diplomatic", "Time"]
+            num_conditions = rand(1..5)
+
+            @victory_conditions = conditions.sample(num_conditions)
+            if num_conditions == 5
+            @victory_conditions = "All"
+            end
+            return @victory_conditions
+          end
+        </code></pre>
+      </p>
+      <p>
+        This is about the time that my fiance looked over my shoulder and said, "You just couldn't keep it simple, could you?" (I had originally wanted to make a class to produce a specific unit in the game, but he convinced me that it was a bit more complicated than necessary.)
+      </p>
+      <p>
+        Now let's go back to our <code>initialize</code> method. Since this class isn't accepting any arguments, and we want it to produce a new set of rules for each instance, we can set our variables to the various internal methods.
+      </p>
+      <p>
+        <pre><code>
+            def initialize
+              @player_civ = civilization
+              @size = map_size
+              @type = map_type
+              @num_civs = ai_civs
+              @num_city_states = city_states
+              @victory_conditions = victory
+            end
+        </code></pre>
+      </p>
+      <p>
+        Now let's put it all together and add one more method, <code>print_rules</code>, to print our new game rules to the screen!
+      </p>
+      <p>
+        <pre><code>
+        class CivGame
+          def initialize
+            @player_civ = civilization
+            @size = map_size
+            @type = map_type
+            @num_civs = ai_civs
+            @num_city_states = city_states
+            @victory_conditions = victory
+          end
+
+          def civilization
+            civs = ["American", "Arabian", "Assyrian", "Austrian", "Aztec", "Babylonian", "Brazilian", 
+                    "Byzantine", "Carthaginian", "Celtic", "Chinese", "Danish", "Dutch", "Egyptian", 
+                    "English", "Ethiopian", "French", "German", "Greek", "Hunnic", "Incan", "Indian", 
+                    "Indonesian", "Iroquois", "Japanese", "Korean", "Mayan", "Mongolian", "Moroccan", 
+                    "Ottoman", "Persian", "Polish", "Polynesian", "Portuguese", "Roman", "Russian", 
+                    "Shoshone", "Siamese", "Songhai", "Spanish", "Swedish", "Venetian", "Zulu"]
+            return civs.sample
+          end
+
+          def map_size
+            sizes = ["Duel", "Tiny", "Small", "Standard", "Large", "Huge"]
+            return sizes.sample
+          end
+
+          def map_type
+            maps = ["Archipelago", "Continents", "4 Corners", "Fractal", "Great Plains", "Highlands", 
+                    "Ice Age", "Inland Sea", "Lakes", "North vs. South", "Oval", "Pangea", "Skirmish", 
+                    "Small Continents", "Terra", "Tiny Islands", "West vs. East", "Amazon Plus", 
+                    "Arborea", "Boreal", "Europe", "Frontier", "Great Plains Plus", "Hemispheres", 
+                    "Rainforest", "Tilted Axis", "Africa", "Americas", "Asia", "Bering Strait",
+                    "British Isles", "Caribbean", "Continents Plus", "Earth", "Earth Plus", "Fractal",
+                    "Eastern United States", "Ice Age", "Inland Sea", "Japanese Mainland", "Pangea Plus",
+                    "Mediterranean", "Mesopotamia", "Ring", "Sandstorm", "Shuffle"]
+            return maps.sample
+          end
+
+          def ai_civs
+            @num_civs = rand(1..21)
+            return @num_civs
+          end
+
+          def city_states
+            if @num_civs < 5
+            @num_city_states = rand(0..21)
+            else @num_city_states = rand(0..41)
+            end
+            return @num_city_states
+          end
+
+          def victory
+            conditions = ["Domination", "Cultural", "Science", "Diplomatic", "Time"]
+            num_conditions = rand(1..5)
+
+            @victory_conditions = conditions.sample(num_conditions)
+            if num_conditions == 5
+              @victory_conditions = "All"
+            end
+            return @victory_conditions
+          end
+
+          def print_rules
+            puts
+            puts "Player civilization: #{@player_civ}"
+            puts "Map size: #{@size}"
+            puts "Map type: #{@type}"
+            puts "Number of AI civilizations: #{@num_civs}"
+            puts "Number of city-states: #{@num_city_states}"
+            puts "Victory condition(s): #{@victory_conditions}"
+            puts
+          end
+        end
+        </code></pre>
+      </p>
+      <p>
+        Finally, we'll create a new instance of this class, then make a call to our <code>print_rules</code> method to see the results.
+      </p>
+      <p>
+        <pre><code>        
+        game = CivGame.new
+        game.print_rules
+
+        Player civilization: Mongolian
+        Map size: Small
+        Map type: Mesopotamia
+        Number of AI civilizations: 4
+        Number of city-states: 17
+        Victory condition(s): All
+        </code></pre>
+      </p>
+      <p>
+        Oooh, that could be an interesting game! Let's try one more.
+      </p>
+      <p>
+        <pre><code>
+        game = CivGame.new
+        game.print_rules
+
+        Player civilization: Russian
+        Map size: Large
+        Map type: Ice Age
+        Number of AI civilizations: 3
+        Number of city-states: 7
+        Victory condition(s): ["Domination", "Cultural"]
+        </code></pre>
+      </p>
+      <p>
+        Heh...that game would be rough. Ice Age means that the map is largely covered in snow and ice, two terrain types that produce no resources. The one advantage you'd have as Russia is that you automatically receive double quantities of certain strategic resources, so you'd have a hand up on the Domination victory as long as you could find some iron, horses, or uranium on the map.
+      </p>
+      <p>
+        Again, this particular class requires no input on generation, so everything is handled internally. The benefit of wrapping all these methods up in a class is that we don't have to type out game.map_size, game.map_type, game.ai-civs... instead, all we have to do is create a new instance of the class, fire up Civilization V, and start a new game!
+      </p>
+      <p>
+        <a href="../blog/index.html">Back to blog index</a>
+      </p>
+    </section>
+    <footer>
+      <p>Copyright 2015 Katelyn Dinkgrave</p>
+    </footer>
+</body>
+</html>
