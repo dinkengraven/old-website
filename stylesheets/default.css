@@ -3,6 +3,10 @@ body {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+code {
+	font-size: 11pt
+}
+
 h1 {
 	color: whitesmoke;
 	font-size: 4em;
