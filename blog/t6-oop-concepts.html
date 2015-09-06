@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <title>blog @ dinkengraven.github.io</title>
+</head>
+
+<body>
+    <header>
+      <h1>Katelyn Dinkgrave</h1>
+      <h5>Student of Code & Registered Dietitian</h5>
+    </header>
+    <nav>
+         <a href="http://dinkengraven.github.io/index.html">Home</a>
+         <a href="http://dinkengraven.github.io/about.html">About</a>
+         <a href="http://dinkengraven.github.io/contact.html">Contact</a>
+         <a href="http://dinkengraven.github.io/blog/index.html">Blog</a>
+         <a href="http://dinkengraven.github.io/portfolio/index.html">Portfolio</a>
+         <a href="../resume.html">Resume</a>
+    </nav>
+    <section>
+      <h3>Technical Blog - Phase 0 Week 6</h3>
+         <h4>Object-Oriented Programming Concepts: Blocks, Procs, and Lambdas in Ruby</h4>
+         <h4>September 5, 2015</h4>
+      <p>
+        This is going to be a very basic overview of these terms, as I am still coming to understand them myself. In Ruby there are three different ways to pass code to a method: Blocks, procs, and lambdas. 
+      </p>
+      <p>
+        A block should be familiar to anyone who has used a method such as <code>.each</code>, <code>.map</code>, or <code>.each_with_index</code> (among a myriad of others, of course). In the <a href="http://ruby-doc.org/core-2.2.0/Array.html">docs</a>, it appears as this: <code>each { |item| block } -> ary</code>, which indicates to the <code>.each</code> method, "Refer to each element in the array as the variable <em>item</em> and do <em>block</em> to it until you reach the end of the array." 
+      </p>
+      <p>
+        <pre><code>
+          ary = [1, 2, 3]
+          ary.each { |num| puts num * 2 }
+
+          <em># => 2
+          # => 4
+          # => 6</em>
+        </code></pre>
+      </p>
+      <p>
+        Simple enough, right? We can see the relationship between the block and the method that it's being passed to. (Another way to think of this is that the method temporarily yields control to the block.) What if I want to pass more than one block to my method?
+      </p>
+      <p>
+        <pre><code>
+          ary.each { |num| puts num + 1 } { |num| puts num * 2 }
+          <em># => syntax error, unexpected { arg, expecting end-of-input</em>
+        </code></pre>
+      </p>
+      <p>
+        If you've had any experience with Ruby methods, you could probably tell from looking at that code that it wouldn't work. It just doesn't look quite right. This is where procs come in. Procs, short for <em>procedures</em>, are members of the Proc class (as are blocks, which may seem confusing at first). A proc can be saved in a variable, allowing it to be used in multiple methods.
+      </p>
+      <p>
+        <pre><code>
+          p = Proc.new { puts "Hello world!" }
+          p.call        <em># => Hello world!</em>
+          p.class       <em># => Proc</em>
+        </code></pre>
+      </p>
+      <p>
+        Now let's try passing three procs into a method.
+      </p>
+      <p>
+        <pre><code>
+          proc_1 = Proc.new { puts "Hello" }
+          proc_2 = Proc.new { puts "Hi!" }
+          proc_3 = Proc.new { puts "Hey there" }
+
+          def print_msgs (x, y, z)
+            x.call
+            y.call
+            z.call
+          end
+
+          print_msgs(proc_1, proc_2, proc_3)
+
+          <em># => Hello
+          # => Hi!
+          # => Hey there</em>
+        </code></pre>
+      </p>
+      <p>
+        Lambdas are also members of the Proc class. Unlike procs, lambdas recognize how many arguments they're supposed to receive.
+      </p>
+      <p>
+        <pre><code>
+          lam = lambda { |x, y| x + y }
+          lam.call(1,2)   <em># => 3</em>
+          lam.call(1)     <em># => wrong number of arguments (1 for 2) (ArgumentError)</em>
+
+          proc = Proc.new { |x, y| x + y }
+          proc.call(1)    <em># => rb:41:in `+': nil can't be coerced into Fixnum (TypeError)</em>
+        </code></pre>
+      </p>
+      <p>
+        In this case, proc knows something is wrong, but it's not because it received the incorrect number of arguments. Proc assigned x to 1, then didn't have anything left to assign to y, so it used nil. You can't add nil, a member of the Nil class, to 1, a member of the Integer class, so we got the resulting error message.
+      </p>
+      <p>
+        The other difference between procs and lambdas lies in their use of <code>return.</code> This was a tricky concept for me, so I am going to use an example adapted from <a href="https://rubymonk.com/learning/books/4-ruby-primer-ascent/chapters/18-blocks/lessons/64-blocks-procs-lambdas">RubyMonk</a>:
+      </p>
+      <p>
+        <pre><code>
+          def first_method
+            Proc.new { return "we just returned from the block" }.call
+            return "we just returned from the calling method"
+          end
+
+          puts first_method    <em># => we just returned from the block</em>
+
+
+          def second_method
+            lambda { return "we just returned from the block" }.call
+            return "we just returned from the calling method"
+          end
+
+          puts second_method    <em># => we just returned from the calling method</em>
+        </code></pre>
+      </p>
+      <p>
+        Here, the call to the Proc object returns the string held within it. The code then exits the method. In second_method, the <code>return</code> within the lambda object passes control back to the method, which exits with its own <code>return</code>.
+      </p>
+      <p>
+        All four of the topics discussed here -- methods, blocks, procs, and lambdas -- fall under the term <em>closures</em> and refer to ways that you can pass pieces of code around. A block is an anonymous piece of code passed to a method. A proc is similar to a block, but it can be stored in a variable and therefore used more than once and in different places. Multiple procs can be passed to a method (on the other hand, a method can only accept a single block). A lambda is similar to a proc, but recognizes the number of arguments that it is meant to accept. A lambda also uses <code>return</code> to relinquish control back to the method that contains it.
+      </p>
+      <p>
+        Admittedly, I've spent far longer than a single hour on this blog post (my initial goal). This was a very difficult concept for me to grasp, and I'm sure that I haven't done the topic justice. However, this was a good opportunity to challenge myself and stretch my understanding of more difficult concepts. If you have any feedback, please feel free to reach out to me via email or Twitter!
+      </p>
+      <p>
+        <a href="../blog/index.html">Back to blog index</a>
+      </p>
+    </section>
+    <footer>
+      <p>Copyright 2015 Katelyn Dinkgrave</p>
+    </footer>
+</body>
+</html>
