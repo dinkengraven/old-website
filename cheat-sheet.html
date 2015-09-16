@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheets/cheatsheet.css">
+	<title>Git Cheat Sheet</title>
+</head>
+
+<body>
+	<header>
+	<h1>Git Cheat Sheet</h1>
+	<h4>A quick guide so that you don't have to ugly-cry.</h4>
+		<p id="intro">
+			Hey, we've all been there. You're plugging away at your code, happy as a clam, and suddenly realize that you forgot to switch into a feature branch before you got started. Or maybe you tried to commit changes to a file that you've already changed, and now you have merge conflicts to sort out. Or perhaps someone suggested that you simply pull your changes from your remote repository before proceeding, and you had to ask them to repeat those instructions in English. Simply use this handy reference to get yourself back on track. I made this cheat sheet after several panic-stricken moments of thinking that I just deleted my entire repo, or that I had otherwise irrevocably Ruined Everything Forever. The bad news is that it simply takes practice. The good news is that git is generally pretty forgiving.
+		</p>
+	</header>
+
+	<section id="left">
+	<h2>Getting & Creating Projects</h2>
+		<h3>git init</h3>
+			<p>
+				Use this command to create a repository from an existing directory of files. This can be done at any time in any local directory.
+			</p>
+			<p>
+				<pre><code>
+				$ pwd
+				>  /Users/Documents/js
+				$ git init
+				> Initialized empty Git repository in /Users/Documents/js/.git/
+				</code></pre>
+			</p>
+		<h3>git clone</h3>
+			<p>
+				This command will clone a repository and provide you with a local copy. This allows you to read and edit your own copies of the files without directly affecting the originals.
+			</p>
+			<p>
+				<pre><code>
+				$ pwd
+				>  /Users/Documents/new-project
+				$ git clone https://github.com/username/my-awesome-project.git
+				> Cloning into 'my-awesome-project'...
+				> remote: Counting objects: 56, done.
+				> remote: Total 56 (delta 0), reused 0 (delta 0), pack-reused 56
+				> Unpacking objects: 100% (56/56), done.
+				> Checking connectivity... done.
+				</code></pre>
+			</p>
+	<h2>Branching, Fetching, Merging, and Pulling</h2>
+		<h3>git branch (branch name)</h3>
+			<p>
+				Use this command to create a new branch. Branching with git allows you to work on a copy of your file without making permanent changes.
+			</p>
+			<p>
+				<code>$ git branch new-feature</code>
+			</p>
+			<p>
+				Now you can check which branches you've made as well as your current branch (marked with an asterisk *):
+			</p>
+			<p>
+				<pre><code>
+				$ git branch
+				>  master
+				>* new-feature
+				</code></pre>
+			</p>
+		<h3>git checkout (branchname)</h3>
+			<p>
+				Use this command to switch branches. It can also be shortened to <code>git co</code>.
+			</p>
+			<p>
+				<pre><code>
+				$ git checkout master 
+				> Switched to branch 'master'
+				$ git co new-feature
+				> Switched to branch 'new-feature'
+				</code></pre>
+			</p>
+		<h3>git fetch</h3>
+			<p>
+				Used to retrieve changes from a remote repository to update your local repo. Note that this command only retrieves the changes; the second step is to merge them. 
+			</p>
+		<h3>git merge</h3>
+			<p>
+				Used to merge remote changes into your local repo.
+			</p>
+		<h3>git pull</h3>
+			<p>
+				Combines the functions of <code>git fetch</code> and <code>git merge</code>. Note that if there are no merge conflicts, this process will happen all at once with no chance to make any decisions about what to merge. If you want more options, stick with the fetch/merge process.
+			</p>
+	<h2>Remotes</h2>
+		<p>
+			Remotes are a way to explicity tell git where you want to send and receive changes. If you are working on a forked and cloned repository, you may want to be able to fetch changes from the original repo to your local copy, and push changes from your local copy to either your remote repo or the original.
+		</p>
+		<h3>git remote -v</h3>
+			<p>
+				Lists current remotes.
+			</p>
+		<h3>git remote add (remote name) (remote URL)</h3>
+			<p>
+				Create a new remote with the specified name and URL. Common names include origin (for your own remote repo) and upstream (the original repo that you forked).
+			</p>
+		<h3>git remote rm (remote name)</h3>
+			<p>
+				Removes the named remote.
+			</p>
+		<h3>git remote rename (old name) (new name)</h3>
+			<p>
+				Changes the name of an existing remote.
+			</p>
+		<h3>git remote set-url (--push, --fetch) (name) (new URL)</h3>
+			<p>
+			Change the URL associate with a remote. Use --push to specifically change the URL assocuate with push, or --fetch to change the URL associate with fetch.
+			</p>
+	</section>
+
+	<section id="right">
+	<h2>Who Gives a Hoot About Version Control?</h2>
+		<p>
+			You do! Version control allows you to edit files without fear of permanently Ruining Everything Forever. If you want to add a new feature to your application, using version control lets you do that without risking breaking the entire program altogether. If you merge your new features into your existing program and something breaks, you can simply revert back to what your code looked like before you merged those changes. Then you can work on getting the bugs out of your new feature without major downtime.
+		</p>
+	<h2>Staging & Committing Changes</h2>
+		<h3>git status</h3>
+			<p>
+				Reviews files that have been added and changed.
+			</p>
+		<h3>git add</h3>
+			<p>
+				Used to stage files for commit. Files can be added individually, or you can use the command <code>git add . </code> to add all changed files in the pwd.
+			</p>
+		<h3>git commit -m "brief summary of changes"</h3>
+			<p>
+				This command saves a "snapshot" of your file in its current state. It's advisable to make multiple commits as you work on a file, so that you have the choice to return to a previous state should you need to. Be sure to include a message describing what you changed (but keep it brief).
+			</p>
+		<h3>git log</h3>
+			<p>
+				Use this command to review previous commits.
+			</p>
+		<h3>git diff</h3>
+			<p>
+				Provides a detailed log of changes made to unstaged files. Can be viewed with pagination on the command line. 
+			</p>
+			<p>
+				Using <code>git diff --cached</code> will show changes made to files that have been staged but not yet committed.
+			</p>
+		<h3>git stash</h3>
+			<p>
+				Temporarily store changes. This is a great tool when you forget to switch to a feature branch before you begin working.  Use <code>git stash pop</code> to retrieve your stashed changes after you switch branches.
+			</p>
+			<p>
+				<pre><code>
+				$ git stash
+				> Saved working directory and index state WIP on new-feature:
+				>  d26bd39 add links
+				> HEAD is now at d26bd39 add links
+
+				$ git stash pop
+				> (This will now show your git status with files to be staged)
+				</code></pre>
+			</p>
+		<h3>git push</h3>
+			<p>
+				Used to push local commits to your remote repository.
+			</p>
+	<h2>Resolving Merge Conflicts</h2>
+		<p>
+			The most common type of merge conflict, an edit collision, occurs when the same file is changed on two different branches, and then you attempt to merge those branches together. If you're trying to complete a pull request on GitHub, the site will suggest that you first resolve these conflicts using the command line.
+		</p>
+		<p>
+			Begin by opening the file in your text editor. Git will helpfully point out the conflicts using <code><<<<<<<</code> at the beginning of the problem area and <code>>>>>>>></code> at the end. In between, you'll find <code>=======</code> delineating the point between the two branches in conflict.
+		</p>
+		<p>
+			Here you can choose to keep the changes in the top half (at the HEAD), or the bottom half (the other branch). Delete whichever code you don't want to keep as well as the markers <code><<<<<<<</code>. <code>=======</code>, and <code>>>>>>>></code>. Alternatively, you can keep a combination of the two changes.
+		</p>
+		<p>
+			Save the file and close your text editor. You should now be able to use <code>git add</code> to add your changes for commit now that the conflict has been resolved.
+		</p>
+		<p>
+			For more information on conflicts, check out <a href="https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-line/">this</a> page at help.github.com.
+		</p>
+
+	</section>
+</body>
+
+<footer>
+	If you have any feedback or corrections on this resource, please feel free to send an <a href="mailto:katelyn.dinkgrave@gmail.com">email</a> or contact me on <a href="https://twitter.com/programmerRD">Twitter</a>. You can also open an issue on my <a href="https://github.com/dinkengraven">GitHub</a> account.
+</footer>
+
+</html>
+
+
+
+
+
+
+
+
+
