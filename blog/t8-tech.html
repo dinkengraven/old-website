@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <title>blog @ dinkengraven.github.io</title>
+</head>
+
+<body>
+    <header>
+      <h1>Katelyn Dinkgrave</h1>
+      <h5>Student of Code & Registered Dietitian</h5>
+    </header>
+    <nav>
+         <a href="http://dinkengraven.github.io/index.html">Home</a>
+         <a href="http://dinkengraven.github.io/about.html">About</a>
+         <a href="http://dinkengraven.github.io/contact.html">Contact</a>
+         <a href="http://dinkengraven.github.io/blog/index.html">Blog</a>
+         <a href="http://dinkengraven.github.io/portfolio/index.html">Portfolio</a>
+         <a href="../resume.html">Resume</a>
+    </nav>
+    <section>
+      <h3>Technical Blog - Phase 0 Week 8</h3>
+         <h4>Test-Driven Development (TDD)</h4>
+         <h4>September 19, 2015</h4>
+      <p>
+        Test-Driven Development, or TDD, is a method of writing software. Put very simply, it is a process by which code is written to satisfy tests, instead of the developer writing tests to satisfy code. The idea here is that the tests guide the development of the program, which should result in fewer bugs, greater flexibility and extendability of the program, and a more efficient refactoring process.
+      </p>
+      <p>
+        In TDD, before a single line of code is written, the developer first writes a test. Obviously, with no other code in place, this test will fail. The developer then writes just enough code to make the test pass, and the process begins anew with another test. At this point, the code is likely to be imperfect -- it may be too verbose, too repetitive, or otherwise "not pretty." But it works. It is a minimum viable product that passes the tests, and so development continues.
+      </p>
+      <p>
+        Once the program is finished and all the tests have passed, refactoring begins. The developer looks over the program to evaluate what are commonly referred to as <a href="http://blog.codinghorror.com/code-smells/">code smells</a>, and then addresses these issues one-by-one. A small change is made, the tests are run, and then another small change is made, and the tests are run again. The tests, which first directed the development of the program itself, now guide its refactoring process. By making small changes and testing frequently, the developer can change small parts of the code with reduced risk of creating bugs and amassing technical debt. In other words, with well-written tests you generally know right away whether or not the code is broken.
+      </p>
+      <p>
+        Here is the basic process of TDD:
+          <ol>
+            <li>Add a test</li>
+            <li>Run all tests and see if the newest test fails</li>
+            <li>Write just enough code to pass the failing test</li>
+            <li>Run the tests again</li>
+            <li>Refactor a small seciton of code</li>
+            <li>Run the tests again</li>
+            <li>Continue until both you and the tests are satisfied</li>
+          </ol>
+      </p>
+      <p>
+        Another benefit of TDD is that because the tests guide the code, the developer must have an intimate and explicit knowledge of what the program is meant to do. You cannot write a test without knowing what it is that you are testing for, and so TDD guides the developer to see the bigger picture while focusing on the details. Even as an inexperienced programmer, I can see how this process may help prevent you from missing the forest for the trees, or perhaps missing the trees for the forest (in other words, feeling so overwhelmed with the task that you have no idea where to start). It actually reminds me a bit of when I was studying art, and in one of my drawing classes we had a discussion about how hard it is to draw on a blank canvas. You're not sure where to begin, and on some level you worry about immediately messing up and "ruining" the piece. Likewise, a blank text editor file can feel much the same way. Writing a test gives you a step forward; it creates a mark on the formerly blank canvas and provides direction for progress.
+      </p>
+      <p>
+        Of course, this is not a perfect process. Critics of TDD point to its time-up-front costs, the risk of failing to write all possible tests for all possible scenarios (and thereby creating bugs further down the line), and a false sense of security obtained through passing a series of tests (because the code and the tests are typically written by the same person, they may share the same weaknesses), among other issues. 
+      </p>
+      <p>
+        Without much experience in TDD at this stage, I cannot speak directly to the benefits and drawbacks of the process, nor take sides in the ongoing debate. However, I look forward to learning more about TDD throughout my time at Dev Bootcamp.
+      </p>
+      </p>
+      <p>
+        <a href="../blog/index.html">Back to blog index</a>
+      </p>
+    </section>
+    <footer>
+      <p>Copyright 2015 Katelyn Dinkgrave</p>
+    </footer>
+</body>
+</html>
